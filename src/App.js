@@ -77,7 +77,7 @@ class App extends Component {
 
   onPictureSubmit = () => {
     this.setState({ imgUrl: this.state.input })
-    fetch('https://fatidique-chaise-44252.herokuapp.com/imageUrl', {
+    fetch(`${ process.env.BACKEND_SERVER }/imageUrl`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -87,7 +87,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('https://fatidique-chaise-44252.herokuapp.com/image', {
+          fetch(`${ process.env.BACKEND_SERVER }/image`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

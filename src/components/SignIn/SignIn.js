@@ -19,7 +19,7 @@ class SignIn extends React.Component {
     }
 
     onSubmitSignIn = () => {
-        fetch('https://fatidique-chaise-44252.herokuapp.com/signin', {
+        fetch(`${ process.env.BACKEND_SERVER }/signIn`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
