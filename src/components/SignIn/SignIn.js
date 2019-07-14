@@ -19,7 +19,8 @@ class SignIn extends React.Component {
     }
 
     onSubmitSignIn = () => {
-        fetch(`${ process.env.BACKEND_SERVER }/signIn`, {
+        console.log(process.env.BACKEND_SERVER);
+        fetch(`https://image-recognition-brain-api.herokuapp.com/signIn`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

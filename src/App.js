@@ -77,7 +77,7 @@ class App extends Component {
 
   onPictureSubmit = () => {
     this.setState({ imgUrl: this.state.input })
-    fetch(`${ process.env.BACKEND_SERVER }/imageUrl`, {
+    fetch(`https://image-recognition-brain-api.herokuapp.com/imageUrl`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -87,7 +87,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch(`${ process.env.BACKEND_SERVER }/image`, {
+          fetch(`https://image-recognition-brain-api.herokuapp.com/image`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

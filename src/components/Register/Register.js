@@ -24,7 +24,7 @@ class Register extends React.Component {
     }
 
     onSubmitSignIn = () => {
-        fetch(`${ process.env.BACKEND_SERVER }/register`, {
+        fetch(`https://image-recognition-brain-api.herokuapp.com/register`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
