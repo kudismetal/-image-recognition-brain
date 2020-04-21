@@ -14,9 +14,10 @@ const particlesOptions = {
     line_linked: {
       shadow: {
         enable: true,
-        color: "#3CA9D1",
+        color: "#000000",
         blur: 5
-      }
+      },
+      color: "#000000"
     }
   }
 }
@@ -33,13 +34,22 @@ const initialState = {
     email: '',
     entries: 0,
     joined: ''
-  }
+  },
+  isMobile: window.innerWidth < 768
 }
 
 class App extends Component {
   constructor() {
     super();
     this.state = initialState;
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  onResize = () => {
+    this.setState({
+      isMobile: window.innerWidth < 768
+    });
   }
 
   loadUser = (data) => {
@@ -115,14 +125,18 @@ class App extends Component {
   }
 
   render() {
-    const { isSignedIn, box, imgUrl, route } = this.state
+    const { isSignedIn, box, imgUrl, route, isMobile } = this.state
 
     return (
       <div className="App">
-        <Particles 
-          className='particles'
-          params={ particlesOptions }
-        />
+        {
+          !isMobile && (
+            <Particles 
+              className='particles'
+              params={ particlesOptions }
+            />
+          )
+        }
         <Navigation isSignedIn={ isSignedIn } onRouteChange={ this.onRouteChange } />
         { route === 'home'
           ? <div>
